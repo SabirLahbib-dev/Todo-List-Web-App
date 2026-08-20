@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import searchIcon from "./assets/icons/search-icon.png";
-import newListIcon from "./assets/icons/new-list-icon.png";
+import { Header } from "./components/Header";
 import "./App.css";
 
 function App() {
@@ -25,46 +24,18 @@ function App() {
 
   return (
     <>
-      <div className="app-title-container">
-        <h1 className="app-title">Todo List App</h1>
-        <img src={newListIcon} alt="New List" height="25" />
-        <span className="new-list-number">3</span>
-      </div>
-      <header className="App-header">
-        <p className="todays-date">21st February, 2025</p>
-        <div className="left-section">
-          {/* search button for small screens */}
-          <button
-            className="search-mobile-button"
-            onClick={() => setIsMobileSearchOpen(!isMobileSearchOpen)}
-          >
-            <img src={searchIcon} alt="Search" className="search-icon" />
-          </button>
-
-          {/* search bar for small screens */}
-          {isMobileViewport && isMobileSearchOpen && (
-            <div className="search-bar-container-mobile">
-              <img src={searchIcon} alt="Search" className="search-icon" />
-              <input
-                type="search"
-                className="search-bar"
-                placeholder="Search list..."
-              ></input>
-            </div>
-          )}
-
-          {/* search bar for large screens */}
-          <div className="search-bar-container">
-            <img src={searchIcon} alt="Search" className="search-icon" />
-            <input
-              type="search"
-              className="search-bar"
-              placeholder="Search list..."
-            ></input>
-          </div>
-          <button className="add-new-list-button">Add New List</button>
+      <Header
+        isMobileViewport={isMobileViewport}
+        isMobileSearchOpen={isMobileSearchOpen}
+        setIsMobileSearchOpen={setIsMobileSearchOpen}
+      />
+      {/* Main content of the app can go here */}
+      <main className="main-content">
+        <div className="active-and-completed-tasks-switchers">
+          <button className="active-tasks-button">Active Tasks</button>
+          <button className="completed-tasks-button">Completed Tasks</button>
         </div>
-      </header>
+      </main>
     </>
   );
 }
