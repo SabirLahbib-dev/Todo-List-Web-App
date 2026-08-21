@@ -1,12 +1,28 @@
+import { useEffect, useState } from "react";
 import searchIcon from "../assets/icons/search-icon.png";
 import newListIcon from "../assets/icons/new-list-icon.png";
 import "./Header.css";
 
-export function Header({
-  isMobileViewport,
-  isMobileSearchOpen,
-  setIsMobileSearchOpen,
-}) {
+export function Header() {
+  const [isMobileViewport, setIsMobileViewport] = useState(
+    window.innerWidth <= 550,
+  );
+  const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const mobileViewport = window.innerWidth <= 550;
+      setIsMobileViewport(mobileViewport);
+
+      if (!mobileViewport) {
+        setIsMobileSearchOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <>
       <div className="app-title-container">
@@ -15,7 +31,9 @@ export function Header({
         <span className="new-list-number">3</span>
       </div>
       <header className="App-header">
-        <p className="todays-date">21st February, 2025</p>
+        <select className="day-selector">
+          <option>21st February, 2025</option>
+        </select>
         <div className="left-section">
           {/* search button for small screens */}
           <button
