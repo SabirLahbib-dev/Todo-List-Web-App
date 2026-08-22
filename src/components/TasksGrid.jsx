@@ -13,6 +13,7 @@ export function TasksGrid() {
           personnages ou d'événements dans un récit. En littérature, elle
           constitue une pause.
         </div>
+        <div className="task-date">21st February, 2025</div>
         <div className="task-start-and-end-time">12:00pm - 18:00am</div>
       </div>
     </div>

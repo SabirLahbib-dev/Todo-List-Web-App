@@ -3,7 +3,7 @@ import searchIcon from "../assets/icons/search-icon.png";
 import newListIcon from "../assets/icons/new-list-icon.png";
 import "./Header.css";
 
-export function Header() {
+export function Header({ setIsAddingNewTask }) {
   const [isMobileViewport, setIsMobileViewport] = useState(
     window.innerWidth <= 550,
   );
@@ -64,7 +64,14 @@ export function Header() {
               placeholder="Search list..."
             ></input>
           </div>
-          <button className="add-new-list-button">Add New List</button>
+          <button
+            className="add-new-list-button"
+            onClick={() => {
+              setIsAddingNewTask(true);
+            }}
+          >
+            Add New List
+          </button>
         </div>
       </header>
     </>

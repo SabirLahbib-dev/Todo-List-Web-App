@@ -12,12 +12,6 @@
   padding: 10px 12px;
   border-radius: 20px;
 }
-.title-and-checkbox-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-bottom: 10px;
-}
 
 /* learn how to style the checkbox  */
 .task-checkbox {
@@ -53,15 +47,32 @@
 }
 
 /* /----------------------/ */
+.title-and-checkbox-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+}
 .task-title {
   font-size: 16px;
   font-weight: 600;
   margin-left: 10px;
 }
+.task-date {
+  font-size: 15px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
 .task-description {
   font-size: 14px;
   color: rgb(58, 58, 58);
   margin-bottom: 10px;
+}
+.task-start-and-end-time {
+  justify-self: flex-end;
+  font-size: 12px;
+  opacity: 0.9;
+  font-weight: 600;
 }
 
 @media (max-width: 600px) {

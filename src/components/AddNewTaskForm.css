@@ -1,0 +1,120 @@
+.add-new-task-form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  width: min(90%, 460px);
+  padding: 24px;
+  transform: translate(-50%, -50%); /* need to understand */
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box; /* need to understand */
+
+  /* default: before cliking add new task button */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, -46%) scale(0.97);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); /* need to understand */
+}
+
+/* form open : before cliking add new task button */
+.add-new-task-form.open {
+  opacity: 1;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1); /* need to understand */
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 25px;
+}
+.form-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+.cancel-adding-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+}
+.add-new-task-inputs,
+.add-new-task-description-input {
+  width: 100%;
+  height: 50px;
+  padding: 10px 14px;
+  box-sizing: border-box;
+  color: #1f2937;
+  background-color: #f9fafb;
+  max-width: 400px;
+  margin-bottom: 16px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  font-family: inherit;
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s,
+    background-color 0.2s; 
+}
+.add-new-task-inputs:focus,
+.add-new-task-description-input:focus {
+  background-color: white;
+  border-color: rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 3px 0 0px rgba(46, 45, 45, 0.1);
+}
+.add-new-task-description-input {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.action-buttons-container {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+  width: 100%;
+}
+.cancel-button {
+  flex: 1;
+  height: 40px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background-color: transparent;
+  font-size: 15px;
+  outline: none;
+  color: #4b5563;
+}
+.add-new-button {
+  flex: 1;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  background-color: rgb(81, 81, 253);
+  font-size: 15px;
+  color: white;
+  outline: none;
+}
+
+.add-new-button:hover,
+.cancel-button:hover {
+  transform: translateY(-1px);
+}
+.add-new-button:active,
+.cancel-button:active {
+  transform: translateY(0);
+}
