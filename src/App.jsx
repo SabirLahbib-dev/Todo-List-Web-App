@@ -22,10 +22,13 @@ function App() {
 
   return (
     <>
-      <Header setIsAddingNewTask={setIsAddingNewTask} />
+      <Header
+        setIsAddingNewTask={setIsAddingNewTask}
+        activeTasks={activeTasks}
+      />
       <main className="main-content">
         <Switcher />
-        <TasksGrid />
+        <TasksGrid activeTasks={activeTasks} />
       </main>
       <AddNewTaskForm
         isAddingNewTask={isAddingNewTask}

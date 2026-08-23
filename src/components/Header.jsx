@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+import dayjs from "dayjs";
 import searchIcon from "../assets/icons/search-icon.png";
 import newListIcon from "../assets/icons/new-list-icon.png";
 import "./Header.css";
 
-export function Header({ setIsAddingNewTask }) {
+export function Header({ setIsAddingNewTask, activeTasks }) {
   const [isMobileViewport, setIsMobileViewport] = useState(
     window.innerWidth <= 550,
   );
@@ -28,11 +29,11 @@ export function Header({ setIsAddingNewTask }) {
       <div className="app-title-container">
         <h1 className="app-title">Todo List App</h1>
         <img src={newListIcon} alt="New List" height="25" />
-        <span className="new-list-number">3</span>
+        <span className="new-list-number">{activeTasks.length}</span>
       </div>
       <header className="App-header">
         <select className="day-selector">
-          <option>21st February, 2025</option>
+          <option>{dayjs().format('D, MMMM YYYY')}</option>
         </select>
         <div className="left-section">
           {/* search button for small screens */}
