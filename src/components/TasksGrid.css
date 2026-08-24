@@ -46,13 +46,68 @@
   margin-top: -2px;
 }
 
-/* /----------------------/ */
+/* /--------Task--------------/ */
 .title-and-checkbox-container {
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-bottom: 10px;
 }
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dropDown-options-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+  position: relative;
+}
+.dropDown-options-button:hover {
+  opacity: 1;
+}
+.dropDown-options-container {
+  border-radius: 10px;
+  box-shadow: 1px 3px 0 0 rgba(0, 0, 0, 0.06);
+  transform: translateY(-9px);
+  position: absolute;
+  top: 18px;
+  right: 5px;
+  background-color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 100px;
+  transition: all 0.2s ease-in-out;
+
+  /* default parameters */
+  opacity: 0;
+  visibility: hidden;
+}
+.dropDown-options-container:hover {
+  opacity: 1;
+}
+.dropDown-options-container.open {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+.delete-link-container {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+.delete-link-container:hover {
+  color: rgb(66, 66, 66);
+  transition: all 0.2s;
+}
+.delete-task-link {
+  font-size: 13px;
+  font-weight: bold;
+}
+
 .task-title {
   font-size: 16px;
   font-weight: 600;
