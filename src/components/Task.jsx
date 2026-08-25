@@ -2,8 +2,16 @@ import { useState } from "react";
 import detailsIcon from "../assets/icons/details-icon.png";
 import deleteIcon from "../assets/icons/delete-icon.png";
 
-export function Task({ task, BCcolors, taskIndex }) {
+export function Task({ task, BCcolors, taskIndex, setActiveTasks }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const deleteTask = (taskId) => {
+    setActiveTasks((prevTasks) => {
+      return prevTasks.filter((task) => {
+        return task.id !== taskId;
+      });
+    });
+  };
 
   return (
     <div
@@ -28,7 +36,14 @@ export function Task({ task, BCcolors, taskIndex }) {
           >
             <div className="delete-link-container">
               <img src={deleteIcon} height={14} />
-              <span className="delete-task-link">Delete</span>
+              <span
+                className="delete-task-link"
+                onClick={() => {
+                  deleteTask(task.id);
+                }}
+              >
+                Delete
+              </span>
             </div>
           </div>
         </button>

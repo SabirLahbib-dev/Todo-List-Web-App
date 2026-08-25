@@ -1,7 +1,7 @@
 import { Task } from "./Task";
 import "./TasksGrid.css";
 
-export function TasksGrid({ activeTasks }) {
+export function TasksGrid({ activeTasks, setActiveTasks }) {
   const BCcolors = [
     "#E0E7FF", // Soft Indigo / Blue
     "#FEF08A", // Creamy Yellow
@@ -19,6 +19,7 @@ export function TasksGrid({ activeTasks }) {
         return (
           <Task
             task={task}
+            setActiveTasks={setActiveTasks}
             taskIndex={taskIndex}
             BCcolors={BCcolors}
             key={task.id}

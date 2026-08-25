@@ -28,7 +28,7 @@ function App() {
       />
       <main className="main-content">
         <Switcher />
-        <TasksGrid activeTasks={activeTasks} />
+        <TasksGrid activeTasks={activeTasks} setActiveTasks={setActiveTasks} />
       </main>
       <AddNewTaskForm
         isAddingNewTask={isAddingNewTask}
