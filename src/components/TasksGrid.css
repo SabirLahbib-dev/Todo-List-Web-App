@@ -131,6 +131,10 @@
   font-weight: 600;
 }
 
+.completed-task {
+  text-decoration: line-through;
+}
+
 @media (max-width: 600px) {
   .active-tasks-button,
   .completed-tasks-button {

@@ -20,7 +20,7 @@ function App() {
   );
 
   // state for switcher, to give the user the ability to switch between active tasks and completed tasks
-  const [isActiveTasks, setIsActiveTasks] = useState(true);
+  const [isActiveTasksViewMode, setIsActiveTasksViewMode] = useState(true);
 
   // store the active tasks
   useEffect(() => {
@@ -44,15 +44,15 @@ function App() {
       />
       <main className="main-content">
         <Switcher
-          isActiveTasks={isActiveTasks}
-          setIsActiveTasks={setIsActiveTasks}
+          isActiveTasksViewMode={isActiveTasksViewMode}
+          setIsActiveTasksViewMode={setIsActiveTasksViewMode}
         />
         <TasksGrid
           activeTasks={activeTasks}
           setActiveTasks={setActiveTasks}
           setCompletedTasks={setCompletedTasks}
           completedTasks={completedTasks}
-          isActiveTasks={isActiveTasks}
+          isActiveTasksViewMode={isActiveTasksViewMode}
         />
       </main>
       <AddNewTaskForm

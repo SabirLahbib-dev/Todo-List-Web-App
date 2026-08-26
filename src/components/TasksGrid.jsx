@@ -6,7 +6,7 @@ export function TasksGrid({
   setActiveTasks,
   setCompletedTasks,
   completedTasks,
-  isActiveTasks,
+  isActiveTasksViewMode,
 }) {
   const BCcolors = [
     "#E0E7FF", // Soft Indigo / Blue
@@ -20,7 +20,7 @@ export function TasksGrid({
   ];
 
   let tasks;
-  if (isActiveTasks) {
+  if (isActiveTasksViewMode) {
     tasks = activeTasks;
   } else {
     tasks = completedTasks;
@@ -34,7 +34,7 @@ export function TasksGrid({
             task={task}
             setActiveTasks={setActiveTasks}
             activeTasks={activeTasks}
-            isActiveTasks={isActiveTasks}
+            isActiveTasksViewMode={isActiveTasksViewMode}
             setCompletedTasks={setCompletedTasks}
             taskIndex={taskIndex}
             BCcolors={BCcolors}

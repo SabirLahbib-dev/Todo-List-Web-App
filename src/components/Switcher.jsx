@@ -1,20 +1,20 @@
 import "./Switcher.css";
 
-export function Switcher({ isActiveTasks, setIsActiveTasks }) {
+export function Switcher({ isActiveTasksViewMode, setIsActiveTasksViewMode }) {
   return (
     <div className="task-switch-container">
       <button
-        className={`tab-button ${isActiveTasks && "active"}`}
+        className={`tab-button ${isActiveTasksViewMode ? "active" : ""}`}
         onClick={() => {
-          setIsActiveTasks(true);
+          setIsActiveTasksViewMode(true);
         }}
       >
         Active Tasks
       </button>
       <button
-        className={`tab-button ${isActiveTasks ? null : "active"}`}
+        className={`tab-button ${isActiveTasksViewMode ? "" : "active"}`}
         onClick={() => {
-          setIsActiveTasks(false);
+          setIsActiveTasksViewMode(false);
         }}
       >
         Completed Tasks

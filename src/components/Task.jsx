@@ -7,14 +7,14 @@ export function Task({
   BCcolors,
   taskIndex,
   activeTasks,
-  isActiveTasks,
+  isActiveTasksViewMode,
   setActiveTasks,
   setCompletedTasks,
 }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const deleteTask = (taskId) => {
-    const setTasks = isActiveTasks ? setActiveTasks : setCompletedTasks;
+    const setTasks = isActiveTasksViewMode ? setActiveTasks : setCompletedTasks;
 
     setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
   };
@@ -40,12 +40,17 @@ export function Task({
         <div className="title-and-checkbox-container">
           <input
             type="checkbox"
-            className="task-checkbox"
-            onClick={() => {
+            checked={task.isCompleted}
+            onChange={() => {
               completeTask(task.id);
             }}
+            className="task-checkbox"
           />
-          <div className="task-title">{task.name}</div>
+          <div
+            className={`task-title ${task.isCompleted ? "completed-task" : ""}`}
+          >
+            {task.name}
+          </div>
         </div>
         <button className="dropDown-options-button">
           <img
