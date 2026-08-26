@@ -1,9 +1,6 @@
-import { useState } from "react";
 import "./Switcher.css";
 
-export function Switcher() {
-  const [isActiveTasks, setIsActiveTasks] = useState(true);
-
+export function Switcher({ isActiveTasks, setIsActiveTasks }) {
   return (
     <div className="task-switch-container">
       <button

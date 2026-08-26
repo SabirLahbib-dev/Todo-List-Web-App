@@ -23,6 +23,7 @@ export function AddNewTaskForm({
       return {
         ...previousTaskData,
         id: crypto.randomUUID(),
+        isCompleted: false,
         [name]: value,
       };
     });

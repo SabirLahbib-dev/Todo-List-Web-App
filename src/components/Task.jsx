@@ -2,15 +2,33 @@ import { useState } from "react";
 import detailsIcon from "../assets/icons/details-icon.png";
 import deleteIcon from "../assets/icons/delete-icon.png";
 
-export function Task({ task, BCcolors, taskIndex, setActiveTasks }) {
+export function Task({
+  task,
+  BCcolors,
+  taskIndex,
+  activeTasks,
+  isActiveTasks,
+  setActiveTasks,
+  setCompletedTasks,
+}) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const deleteTask = (taskId) => {
-    setActiveTasks((prevTasks) => {
-      return prevTasks.filter((task) => {
-        return task.id !== taskId;
-      });
+    const setTasks = isActiveTasks ? setActiveTasks : setCompletedTasks;
+
+    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
+  };
+
+  // complete task
+  const completeTask = (taskId) => {
+    const completedTask = activeTasks.find((task) => {
+      return task.id === taskId;
     });
+    completedTask.isCompleted = true;
+    setCompletedTasks((prevTasks) => {
+      return [...prevTasks, completedTask];
+    });
+    deleteTask(taskId);
   };
 
   return (
@@ -20,7 +38,13 @@ export function Task({ task, BCcolors, taskIndex, setActiveTasks }) {
     >
       <div className="task-header">
         <div className="title-and-checkbox-container">
-          <input type="checkbox" className="task-checkbox" />
+          <input
+            type="checkbox"
+            className="task-checkbox"
+            onClick={() => {
+              completeTask(task.id);
+            }}
+          />
           <div className="task-title">{task.name}</div>
         </div>
         <button className="dropDown-options-button">

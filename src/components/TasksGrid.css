@@ -17,6 +17,7 @@
 .task-checkbox {
   appearance: none;
   -webkit-appearance: none;
+  flex-shrink: 0;
   width: 20px;
   height: 20px;
   border: 2px solid black;

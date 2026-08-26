@@ -1,7 +1,13 @@
 import { Task } from "./Task";
 import "./TasksGrid.css";
 
-export function TasksGrid({ activeTasks, setActiveTasks }) {
+export function TasksGrid({
+  activeTasks,
+  setActiveTasks,
+  setCompletedTasks,
+  completedTasks,
+  isActiveTasks,
+}) {
   const BCcolors = [
     "#E0E7FF", // Soft Indigo / Blue
     "#FEF08A", // Creamy Yellow
@@ -13,13 +19,23 @@ export function TasksGrid({ activeTasks, setActiveTasks }) {
     "#E2E8F0", // Cool Slate Gray
   ];
 
+  let tasks;
+  if (isActiveTasks) {
+    tasks = activeTasks;
+  } else {
+    tasks = completedTasks;
+  }
+
   return (
     <div className="tasks-list-grid">
-      {activeTasks.map((task, taskIndex) => {
+      {tasks.map((task, taskIndex) => {
         return (
           <Task
             task={task}
             setActiveTasks={setActiveTasks}
+            activeTasks={activeTasks}
+            isActiveTasks={isActiveTasks}
+            setCompletedTasks={setCompletedTasks}
             taskIndex={taskIndex}
             BCcolors={BCcolors}
             key={task.id}
