@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { Header } from "./components/Header";
 import { Switcher } from "./components/Switcher";
 import { TasksGrid } from "./components/TasksGrid";
@@ -32,6 +33,12 @@ function App() {
     localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
   }, [completedTasks]);
 
+  // state for search feature
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchTerm, setSearchTerm] = useState(
+    searchParams.get("search") || "",
+  );
+
   // To observe changes on global states
   console.log("Active tasks", activeTasks);
   console.log("completed tasks", completedTasks);
@@ -41,6 +48,9 @@ function App() {
       <Header
         setIsAddingNewTask={setIsAddingNewTask}
         activeTasks={activeTasks}
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        setSearchParams={setSearchParams}
       />
       <main className="main-content">
         <Switcher
@@ -53,6 +63,7 @@ function App() {
           setCompletedTasks={setCompletedTasks}
           completedTasks={completedTasks}
           isActiveTasksViewMode={isActiveTasksViewMode}
+          searchTerm={searchTerm}
         />
       </main>
       <AddNewTaskForm

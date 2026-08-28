@@ -7,6 +7,7 @@ export function TasksGrid({
   setCompletedTasks,
   completedTasks,
   isActiveTasksViewMode,
+  searchTerm,
 }) {
   const BCcolors = [
     "#E0E7FF", // Soft Indigo / Blue
@@ -19,11 +20,22 @@ export function TasksGrid({
     "#E2E8F0", // Cool Slate Gray
   ];
 
+  const filter = (array) => {
+    return array.filter((task) => {
+      return (
+        task.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        task.description.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    });
+  };
+
   let tasks;
   if (isActiveTasksViewMode) {
-    tasks = activeTasks;
+    searchTerm.trim() ? (tasks = filter(activeTasks)) : (tasks = activeTasks);
   } else {
-    tasks = completedTasks;
+    searchTerm.trim()
+      ? (tasks = filter(completedTasks))
+      : (tasks = completedTasks);
   }
 
   return (

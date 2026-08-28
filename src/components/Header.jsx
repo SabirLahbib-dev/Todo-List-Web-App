@@ -4,10 +4,18 @@ import searchIcon from "../assets/icons/search-icon.png";
 import newListIcon from "../assets/icons/new-list-icon.png";
 import "./Header.css";
 
-export function Header({ setIsAddingNewTask, activeTasks }) {
+export function Header({
+  setIsAddingNewTask,
+  activeTasks,
+  searchTerm,
+  setSearchTerm,
+  setSearchParams,
+}) {
+  // state for setting a responsive search bar
   const [isMobileViewport, setIsMobileViewport] = useState(
     window.innerWidth <= 550,
   );
+  // state for setting a responsive search bar
   const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
 
   useEffect(() => {
@@ -24,6 +32,19 @@ export function Header({ setIsAddingNewTask, activeTasks }) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // useEffect for search feature
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (searchTerm.trim() !== "") {
+        setSearchParams({ search: searchTerm });
+      } else {
+        setSearchParams({});
+      }
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [searchTerm, setSearchParams]);
+
   return (
     <>
       <div className="app-title-container">
@@ -33,7 +54,7 @@ export function Header({ setIsAddingNewTask, activeTasks }) {
       </div>
       <header className="App-header">
         <select className="day-selector">
-          <option>{dayjs().format('D, MMMM YYYY')}</option>
+          <option>{dayjs().format("D, MMMM YYYY")}</option>
         </select>
         <div className="left-section">
           {/* search button for small screens */}
@@ -52,7 +73,11 @@ export function Header({ setIsAddingNewTask, activeTasks }) {
                 type="search"
                 className="search-bar"
                 placeholder="Search list..."
-              ></input>
+                value={searchTerm}
+                onChange={(e) => {
+                  setSearchTerm(e.target.value);
+                }}
+              />
             </div>
           )}
 
@@ -63,7 +88,11 @@ export function Header({ setIsAddingNewTask, activeTasks }) {
               type="search"
               className="search-bar"
               placeholder="Search list..."
-            ></input>
+              value={searchTerm}
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+              }}
+            />
           </div>
           <button
             className="add-new-list-button"
