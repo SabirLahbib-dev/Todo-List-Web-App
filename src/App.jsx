@@ -39,9 +39,21 @@ function App() {
     searchParams.get("search") || "",
   );
 
-  // To observe changes on global states
-  console.log("Active tasks", activeTasks);
-  console.log("completed tasks", completedTasks);
+  // state for the selected date
+  const [selectedDate, setSelectedDate] = useState("");
+
+  const allTasks = [...activeTasks, ...completedTasks];
+
+  const allDates = allTasks.map((task) => task.date);
+
+  const availableDates = Array.from(new Set(allDates)).sort().reverse();
+
+  const validSelectedDate =
+    availableDates.length === 0
+      ? ""
+      : !selectedDate || !availableDates.includes(selectedDate)
+        ? availableDates[0]
+        : selectedDate;
 
   return (
     <>
@@ -51,6 +63,9 @@ function App() {
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
         setSearchParams={setSearchParams}
+        availableDates={availableDates}
+        selectedDate={validSelectedDate}
+        setSelectedDate={setSelectedDate}
       />
       <main className="main-content">
         <Switcher
@@ -64,6 +79,7 @@ function App() {
           completedTasks={completedTasks}
           isActiveTasksViewMode={isActiveTasksViewMode}
           searchTerm={searchTerm}
+          selectedDate={validSelectedDate}
         />
       </main>
       <AddNewTaskForm

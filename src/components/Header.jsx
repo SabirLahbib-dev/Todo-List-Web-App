@@ -10,6 +10,9 @@ export function Header({
   searchTerm,
   setSearchTerm,
   setSearchParams,
+  availableDates,
+  selectedDate,
+  setSelectedDate,
 }) {
   // state for setting a responsive search bar
   const [isMobileViewport, setIsMobileViewport] = useState(
@@ -53,8 +56,23 @@ export function Header({
         <span className="new-list-number">{activeTasks.length}</span>
       </div>
       <header className="App-header">
-        <select className="day-selector">
-          <option>{dayjs().format("D, MMMM YYYY")}</option>
+        <select
+          className="day-selector"
+          value={selectedDate}
+          onChange={(e) => {
+            setSelectedDate(e.target.value);
+          }}
+          disabled={availableDates.length === 0}
+        >
+          {availableDates.length === 0 ? (
+            <option value="">No dates</option>
+          ) : (
+            availableDates.map((date) => (
+              <option value={date} key={date}>
+                {dayjs(date).format("D, MMMM YYYY ")}
+              </option>
+            ))
+          )}
         </select>
         <div className="left-section">
           {/* search button for small screens */}

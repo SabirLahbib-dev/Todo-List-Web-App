@@ -8,6 +8,7 @@ export function TasksGrid({
   completedTasks,
   isActiveTasksViewMode,
   searchTerm,
+  selectedDate,
 }) {
   const BCcolors = [
     "#E0E7FF", // Soft Indigo / Blue
@@ -20,23 +21,22 @@ export function TasksGrid({
     "#E2E8F0", // Cool Slate Gray
   ];
 
-  const filter = (array) => {
-    return array.filter((task) => {
-      return (
-        task.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        task.description.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-    });
-  };
+  const baseTasks = isActiveTasksViewMode ? activeTasks : completedTasks;
+  const query = searchTerm.trim().toLowerCase();
 
-  let tasks;
-  if (isActiveTasksViewMode) {
-    searchTerm.trim() ? (tasks = filter(activeTasks)) : (tasks = activeTasks);
-  } else {
-    searchTerm.trim()
-      ? (tasks = filter(completedTasks))
-      : (tasks = completedTasks);
-  }
+  const tasks = baseTasks.filter((task) => {
+    // 1. Date condition: Direct string comparison
+    const matchesDate = !selectedDate || task.date === selectedDate;
+
+    // 2. Search condition
+    const matchesSearch =
+      !query ||
+      task.name.toLowerCase().includes(query) ||
+      task.description.toLowerCase().includes(query);
+
+    // these two should be true, that's why I did !query and !selectedDate
+    return matchesDate && matchesSearch;
+  });
 
   return (
     <div className="tasks-list-grid">
