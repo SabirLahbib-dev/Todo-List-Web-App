@@ -48,6 +48,7 @@ export function TasksGrid({
             activeTasks={activeTasks}
             isActiveTasksViewMode={isActiveTasksViewMode}
             setCompletedTasks={setCompletedTasks}
+            completedTasks={completedTasks}
             taskIndex={taskIndex}
             BCcolors={BCcolors}
             key={task.id}

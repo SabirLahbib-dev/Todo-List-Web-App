@@ -10,6 +10,7 @@ export function Task({
   isActiveTasksViewMode,
   setActiveTasks,
   setCompletedTasks,
+  completedTasks,
 }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -19,16 +20,36 @@ export function Task({
     setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
   };
 
-  // complete task
-  const completeTask = (taskId) => {
-    const completedTask = activeTasks.find((task) => {
-      return task.id === taskId;
-    });
-    completedTask.isCompleted = true;
-    setCompletedTasks((prevTasks) => {
-      return [...prevTasks, completedTask];
-    });
-    deleteTask(taskId);
+  const toggleTaskStatus = (taskId) => {
+    if (isActiveTasksViewMode) {
+      const completedTask = activeTasks.find((task) => {
+        return task.id === taskId;
+      });
+      if (!completedTask) return; // Guard clause
+
+      setCompletedTasks((prevTasks) => {
+        return [...prevTasks, { ...completedTask, isCompleted: true }];
+      });
+
+      setActiveTasks((prev) => {
+        return prev.filter((task) => task.id !== taskId);
+      });
+
+      // if it's completed tasks view mode
+    } else {
+      const uncompletedTask = completedTasks.find((task) => {
+        return task.id === taskId;
+      });
+      if (!uncompletedTask) return; // Guard clause
+
+      setActiveTasks((preTasks) => {
+        return [...preTasks, { ...uncompletedTask, isCompleted: false }];
+      });
+
+      setCompletedTasks((prev) => {
+        return prev.filter((task) => task.id !== taskId);
+      });
+    }
   };
 
   return (
@@ -42,7 +63,7 @@ export function Task({
             type="checkbox"
             checked={task.isCompleted}
             onChange={() => {
-              completeTask(task.id);
+              toggleTaskStatus(task.id);
             }}
             className="task-checkbox"
           />
