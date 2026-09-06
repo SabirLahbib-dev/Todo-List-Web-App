@@ -1,6 +1,8 @@
 import { useState } from "react";
+import dayjs from "dayjs";
 import detailsIcon from "../assets/icons/details-icon.png";
 import deleteIcon from "../assets/icons/delete-icon.png";
+import modifyIcon from "../assets/icons/modify-icon.png";
 
 export function Task({
   task,
@@ -95,11 +97,15 @@ export function Task({
                 Delete
               </span>
             </div>
+            <div className="modify-link-container">
+              <img src={modifyIcon} height={14} />
+              <span className="modify-task-link">Modify</span>
+            </div>
           </div>
         </button>
       </div>
       <div className="task-description">{task.description}</div>
-      <div className="task-date">{task.date}</div>
+      <div className="task-date">{dayjs(task.date).format("DD, MMMM YYYY")}</div>
       <div className="task-start-and-end-time">{task.startTime}</div>
     </div>
   );

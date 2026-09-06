@@ -82,6 +82,9 @@
   padding-bottom: 10px;
   width: 100px;
   transition: all 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 
   /* default parameters */
   opacity: 0;
@@ -95,16 +98,16 @@
   opacity: 1;
   visibility: visible;
 }
-.delete-link-container {
+.delete-link-container, .modify-link-container {
   display: flex;
   justify-content: center;
-  gap: 5px;
+  gap: 10px;
 }
-.delete-link-container:hover {
+.delete-link-container:hover, .modify-link-container:hover {
   color: rgb(66, 66, 66);
   transition: all 0.2s;
 }
-.delete-task-link {
+.delete-task-link, .modify-task-link {
   font-size: 13px;
   font-weight: bold;
 }
