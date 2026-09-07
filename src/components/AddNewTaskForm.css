@@ -27,7 +27,6 @@
 /* form open : before cliking add new task button */
 .add-new-task-form.open {
   opacity: 1;
-  opacity: 1;
   visibility: visible;
   pointer-events: auto;
   transform: translate(-50%, -50%) scale(1); /* need to understand */

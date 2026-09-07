@@ -1,0 +1,48 @@
+.modify-task-form-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  width: min(90%, 460px);
+  padding: 24px;
+  transform: translate(-50%, -50%); /* need to understand */
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box; /* need to understand */
+
+  /* default: before cliking add new task button */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, -46%) scale(0.97);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); /* need to understand */
+}
+
+.modify-task-form-container.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1); /* need to understand */
+}
+.modify-button {
+  flex: 1;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  background-color: rgb(81, 81, 253);
+  font-size: 15px;
+  color: white;
+  outline: none;
+}
+.modify-button:hover {
+  transform: translateY(-1px);
+}
+.modify-button:active {
+  transform: translateY(0);
+}

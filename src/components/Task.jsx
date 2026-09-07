@@ -13,6 +13,7 @@ export function Task({
   setActiveTasks,
   setCompletedTasks,
   completedTasks,
+  setIsModifyingTask,
 }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -99,13 +100,22 @@ export function Task({
             </div>
             <div className="modify-link-container">
               <img src={modifyIcon} height={14} />
-              <span className="modify-task-link">Modify</span>
+              <span
+                className="modify-task-link"
+                onClick={() => {
+                  setIsModifyingTask(true);
+                }}
+              >
+                Modify
+              </span>
             </div>
           </div>
         </button>
       </div>
       <div className="task-description">{task.description}</div>
-      <div className="task-date">{dayjs(task.date).format("DD, MMMM YYYY")}</div>
+      <div className="task-date">
+        {dayjs(task.date).format("DD, MMMM YYYY")}
+      </div>
       <div className="task-start-and-end-time">{task.startTime}</div>
     </div>
   );

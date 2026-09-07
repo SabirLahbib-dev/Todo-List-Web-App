@@ -4,6 +4,7 @@ import { Header } from "./components/Header";
 import { Switcher } from "./components/Switcher";
 import { TasksGrid } from "./components/TasksGrid";
 import { AddNewTaskForm } from "./components/AddNewTaskForm";
+import { ModifyTaskForm } from "./components/ModifyTaskForm";
 import "./App.css";
 
 function App() {
@@ -55,6 +56,9 @@ function App() {
         ? availableDates[0]
         : selectedDate;
 
+  // state for the modify task form
+  const [isModifyingTask, setIsModifyingTask] = useState(false);
+
   return (
     <>
       <Header
@@ -80,12 +84,17 @@ function App() {
           isActiveTasksViewMode={isActiveTasksViewMode}
           searchTerm={searchTerm}
           selectedDate={validSelectedDate}
+          setIsModifyingTask={setIsModifyingTask}
         />
       </main>
       <AddNewTaskForm
         isAddingNewTask={isAddingNewTask}
         setIsAddingNewTask={setIsAddingNewTask}
         setActiveTasks={setActiveTasks}
+      />
+      <ModifyTaskForm
+        isModifyingTask={isModifyingTask}
+        setIsModifyingTask={setIsModifyingTask}
       />
     </>
   );
