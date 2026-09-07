@@ -10,6 +10,7 @@ export function TasksGrid({
   searchTerm,
   selectedDate,
   setIsModifyingTask,
+  setTaskToModify,
 }) {
   const BCcolors = [
     "#E0E7FF", // Soft Indigo / Blue
@@ -54,6 +55,7 @@ export function TasksGrid({
             BCcolors={BCcolors}
             key={task.id}
             setIsModifyingTask={setIsModifyingTask}
+            setTaskToModify={setTaskToModify}
           />
         );
       })}

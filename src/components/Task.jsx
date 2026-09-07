@@ -14,6 +14,7 @@ export function Task({
   setCompletedTasks,
   completedTasks,
   setIsModifyingTask,
+  setTaskToModify,
 }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -104,6 +105,8 @@ export function Task({
                 className="modify-task-link"
                 onClick={() => {
                   setIsModifyingTask(true);
+                  setTaskToModify(task);
+                  setIsDropdownOpen(false);
                 }}
               >
                 Modify

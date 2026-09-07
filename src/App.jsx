@@ -59,6 +59,8 @@ function App() {
   // state for the modify task form
   const [isModifyingTask, setIsModifyingTask] = useState(false);
 
+  const [taskToModify, setTaskToModify] = useState(null);
+
   return (
     <>
       <Header
@@ -85,6 +87,7 @@ function App() {
           searchTerm={searchTerm}
           selectedDate={validSelectedDate}
           setIsModifyingTask={setIsModifyingTask}
+          setTaskToModify={setTaskToModify}
         />
       </main>
       <AddNewTaskForm
@@ -95,6 +98,11 @@ function App() {
       <ModifyTaskForm
         isModifyingTask={isModifyingTask}
         setIsModifyingTask={setIsModifyingTask}
+        setTaskToModify={setTaskToModify}
+        taskToModify={taskToModify}
+        setActiveTasks={setActiveTasks}
+        isActiveTasksViewMode={isActiveTasksViewMode}
+        setCompletedTasks={setCompletedTasks}
       />
     </>
   );
