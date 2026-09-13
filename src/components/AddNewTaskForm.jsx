@@ -69,7 +69,7 @@ export function AddNewTaskForm({
         type="text"
         name="name"
         value={taskFormData.name}
-        placeholder="Task name"
+        placeholder="Task Name"
         className="add-new-task-inputs"
         onChange={handleInputChange}
       />
@@ -103,10 +103,15 @@ export function AddNewTaskForm({
           onClick={() => {
             setIsAddingNewTask(false);
           }}
+          data-testid="cancel-adding-button"
         >
           Cancel
         </button>
-        <button className="add-new-button" onClick={addNewTask}>
+        <button
+          className="add-new-button"
+          onClick={addNewTask}
+          data-testid="add-task-button"
+        >
           Add New
         </button>
       </div>
