@@ -63,6 +63,7 @@ export function ModifyTaskForm({
       <input
         type="date"
         className="add-new-task-inputs"
+        placeholder="Task Date"
         value={taskToModify ? taskToModify.date : ""}
         onChange={(e) => {
           setTaskToModify((prev) => {
@@ -73,6 +74,7 @@ export function ModifyTaskForm({
       <input
         type="time"
         className="add-new-task-inputs"
+        placeholder="Task Time"
         value={taskToModify ? taskToModify.startTime : ""}
         onChange={(e) => {
           setTaskToModify((prev) => {
@@ -97,7 +99,7 @@ export function ModifyTaskForm({
         >
           Cancel
         </button>
-        <button className="modify-button" onClick={modifyTask}>
+        <button data-testid="modify-task-button" className="modify-button" onClick={modifyTask}>
           Modify
         </button>
       </div>
