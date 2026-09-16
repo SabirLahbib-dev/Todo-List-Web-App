@@ -8,6 +8,7 @@ export function Switcher({ isActiveTasksViewMode, setIsActiveTasksViewMode }) {
         onClick={() => {
           setIsActiveTasksViewMode(true);
         }}
+        data-testid="active-tasks-switch-button"
       >
         Active Tasks
       </button>
@@ -16,6 +17,7 @@ export function Switcher({ isActiveTasksViewMode, setIsActiveTasksViewMode }) {
         onClick={() => {
           setIsActiveTasksViewMode(false);
         }}
+        data-testid="completed-tasks-switch-button"
       >
         Completed Tasks
       </button>
