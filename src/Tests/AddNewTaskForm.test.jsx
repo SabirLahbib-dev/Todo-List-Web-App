@@ -34,7 +34,7 @@ describe("Test suite: AddNewTaskForm", () => {
 
   it("does not add a new task when the form is submitted with empty fields", async () => {
     const nameInput = screen.getByPlaceholderText("Task Name");
-    const dateInput = screen.getByPlaceholderText("Task Date");
+    const dateInput = screen.getByPlaceholderText("Task date");
     const addButton = screen.getByTestId("add-task-button");
 
     await user.type(nameInput, "Learn testing");
@@ -46,7 +46,7 @@ describe("Test suite: AddNewTaskForm", () => {
 
   it("adds a new task when the form is submitted with valid fields", async () => {
     const nameInput = screen.getByPlaceholderText("Task Name");
-    const dateInput = screen.getByPlaceholderText("Task Date");
+    const dateInput = screen.getByPlaceholderText("Task date");
     const startTimeInput = screen.getByPlaceholderText("Task start time");
     const descriptionInput = screen.getByPlaceholderText("Description...");
     const addButton = screen.getByTestId("add-task-button");

@@ -117,6 +117,7 @@ export function Header({
             onClick={() => {
               setIsAddingNewTask(true);
             }}
+            data-testid="add-new-task-button"
           >
             Add New List
           </button>

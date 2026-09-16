@@ -2,7 +2,6 @@ import { render, screen } from "@testing-library/react";
 import { describe, beforeEach, it, vi, expect } from "vitest";
 import { TasksGrid } from "../components/TasksGrid";
 import dayjs from "dayjs";
-import { act } from "react";
 
 describe("Test suite: Task Grid component", () => {
   let activeTasks;

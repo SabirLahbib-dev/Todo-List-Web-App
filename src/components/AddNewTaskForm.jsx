@@ -77,7 +77,7 @@ export function AddNewTaskForm({
         type="date"
         name="date"
         value={taskFormData.date}
-        placeholder="Task Date"
+        placeholder="Task date"
         className="add-new-task-inputs"
         onChange={handleInputChange}
       />
