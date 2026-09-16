@@ -70,6 +70,7 @@ export function Task({
               toggleTaskStatus(task.id);
             }}
             className="task-checkbox"
+            data-testid="task-checkbox"
           />
           <div
             className={`task-title ${task.isCompleted ? "completed-task" : ""}`}
@@ -95,6 +96,7 @@ export function Task({
                 onClick={() => {
                   deleteTask(task.id);
                 }}
+                data-testid="delete-task-button"
               >
                 Delete
               </span>
