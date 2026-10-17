@@ -1,18 +1,77 @@
-# React + Vite
+# Todo List Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A lightweight React + Vite todo application for managing daily tasks with a clean, responsive interface. It lets users create, edit, complete, and delete tasks while keeping everything saved in the browser using local storage.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Add new tasks with dates
+- Mark tasks as complete or active
+- Edit existing task details
+- Delete tasks from the list
+- Filter tasks by search term
+- Browse tasks by date using the date selector
+- Toggle between active and completed task views
+- Responsive layout for desktop and mobile devices
+- Browser persistence using localStorage
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- React 19
+- Vite
+- JavaScript
+- CSS Modules / component styles
+- Vitest + Testing Library for UI tests
 
-Note: This will impact Vite dev & build performances.
+## Getting Started
 
-## Expanding the ESLint configuration
+### Prerequisites
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Node.js 18 or newer
+- npm
+
+### Installation
+
+```bash
+npm install
+```
+
+### Run the app locally
+
+```bash
+npm run dev
+```
+
+The app will start in development mode, usually at http://localhost:5173.
+
+### Build for production
+
+```bash
+npm run build
+```
+
+### Preview production build
+
+```bash
+npm run preview
+```
+
+## Project Structure
+
+```text
+src/
+  App.jsx
+  components/
+  assets/
+  Tests/
+public/
+README.md
+package.json
+```
+
+## Notes
+
+This project stores task data in the browser's localStorage, so tasks remain available after page refreshes on the same browser.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
